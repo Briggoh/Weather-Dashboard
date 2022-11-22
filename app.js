@@ -11,6 +11,8 @@ let currentHumidty= $("#humidity");
 let currentWSpeed=$("#wind-speed");
 let currentUvindex= $("#uv-index");
 let sCity=[];
+//setting up my API key 
+let APIKey = "02e05e26d7d3062173cf2dabd75f0ba4";
 
 // Checks to see if city exists in storage
 function find(c){
@@ -20,10 +22,7 @@ function find(c){
         }
     }
     return 1;
-
-//setting up my API key 
-let APIKey = "f5463c710a507bc638be3354a58139dd";
-
+}
 // Displays current and future weather
 function displayWeather(event){
     event.preventDefault();
@@ -46,12 +45,12 @@ function currentWeather(city){
         const iconurl="https://openweathermap.org/img/wn/"+weathericon +"@2x.png";
         const date=new Date(response.dt*1000).toLocaleDateString();.
         $(currentCity).html(response.name +"("+date+")" + "<img src="+iconurl+">");
-        // Convert the temp to fahrenheit
+        // Convert the temp from C to F
         const tempF = (response.main.temp - 273.15) * 1.80 + 32;
         $(currentTemperature).html((tempF).toFixed(2)+"&#8457");
-        // display humidity 
+        // Display humidity 
         $(currentHumidty).html(response.main.humidity+"%");
-        // display wind speed
+        // Display wind speed
         const ws=response.wind.speed;
         const windsmph=(ws*2.237).toFixed(1);
         $(currentWSpeed).html(windsmph+"MPH");
@@ -114,7 +113,7 @@ function forecast(cityid){
             $("#fHumidity"+i).html(humidity+"%");
         }
     });
-}}
+}
 
 // This adds a previous search to the user's history
 function addToList(c){
