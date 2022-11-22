@@ -1,6 +1,5 @@
 // Declaring a variable that will store the user-inputted city
 let city ="";
-
 // Variable declaration
 let searchCity = $("#search-city");
 let searchButton = $("#search-button");
@@ -43,7 +42,7 @@ function currentWeather(city){
         //Data object from server-side API
         const weathericon= response.weather[0].icon;
         const iconurl="https://openweathermap.org/img/wn/"+weathericon +"@2x.png";
-        const date=new Date(response.dt*1000).toLocaleDateString();.
+        const date=new Date(response.dt*1000).toLocaleDateString();
         $(currentCity).html(response.name +"("+date+")" + "<img src="+iconurl+">");
         // Convert the temp from C to F
         const tempF = (response.main.temp - 273.15) * 1.80 + 32;
