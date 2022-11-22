@@ -113,6 +113,22 @@ function forecast(cityid){
             $("#fTemp"+i).html(tempF+"&#8457");
             $("#fHumidity"+i).html(humidity+"%");
         }
-        
     });
 }}
+
+// This adds a previous search to the user's history
+function addToList(c){
+    const listEl= $("<li>"+c.toUpperCase()+"</li>");
+    $(listEl).attr("class","list-group-item");
+    $(listEl).attr("data-value",c.toUpperCase());
+    $(".list-group").append(listEl);
+}
+
+// This displays the user's past search 
+function invokePastSearch(event){
+    const liEl=event.target;
+    if (event.target.matches("li")){
+        city=liEl.textContent.trim();
+        currentWeather(city);
+    }
+}
