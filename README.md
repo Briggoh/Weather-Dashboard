@@ -1,4 +1,4 @@
-### Weather Dashboard
+# Weather Dashboard
 
 ## Description 
 This front-end application acts as a weather dashboard, and allows the user to identify weather patterns for a given location. Using the OpenWeather API, the user is able to access weather for the day of, as well as the five days following. 
